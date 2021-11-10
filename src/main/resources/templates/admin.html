@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/f4a291c016.js" crossorigin="anonymous"></script>
+    <title>APPAREL STORE</title>
+    <link rel="shortcut icon" type="image/jpg" href="https://png.pngtree.com/element_our/20190531/ourmid/pngtree-shopping-cart-convenient-icon-image_1287807.jpg">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <div class="container-fluid">
+	    <a class="navbar-brand" href="#"><img src="https://png.pngtree.com/element_our/20190531/ourmid/pngtree-shopping-cart-convenient-icon-image_1287807.jpg" width=30rem height=30rem>APPAREL</a>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	      	<li class="nav-item">
+	          <a class="nav-link active" aria-current="page" href="#">|</a>
+	          
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" aria-current="page" href="/admin/add/admin@email.com"><i class="fas fa-plus-square"></i></a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" aria-current="page" href="/admin/order/admin@email.com"><i class="fas fa-shopping-cart"></i></a>
+	        </li>
+	      </ul>
+	    </div>
+	  </div>
+	  <div class="dropdown">
+		  <button class="btn btn-secondary dropdown-toggle" style="margin-right:10px" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+		    Filter By Gender
+		  </button>
+		  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+		  	<li><a class="dropdown-item" th:href="@{/admin/dashboard}">All</a></li>
+		    <li><a class="dropdown-item" th:href="@{'/dashboard/admin@email.com'+'/M'}">Male</a></li>
+		    <li><a class="dropdown-item" th:href="@{'/dashboard/admin@email.com'+'/F'}">Female</a></li>
+		  </ul>
+		</div>
+	  <form th:action="@{'/dashboard/admin@email.com'}" method="POST" th:object="${content}" class="d-flex">
+        <input class="form-control me-2" th:field="*{tshirt}" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+	  <a class="nav-link" href="/"><i class="fas fa-sign-out-alt"></i></a>
+	</nav>
+	
+	
+	
+	<div class="container d-flex flex-wrap justify-content-sm-around" style="margin-top:20px">
+		<div class="mt-10" th:each="ele : ${items}">
+			<div class="card mt-10" style="width: 18rem;padding:10px;height:30rem">
+			  <img th:src="${ele.image}" class="m-auto"  alt="..." height=250rem width=200rem>
+			  <div class="card-body">
+			    <h5 class="card-title" th:text="${ele.tshirt}"></h5>
+			    <h7 class="card-title" th:text="${ele.price}"></h7><br>
+			  </div>
+			</div>
+		</div>
+		
+	</div>
+	
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
